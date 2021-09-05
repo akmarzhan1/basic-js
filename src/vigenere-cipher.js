@@ -61,7 +61,6 @@ export default class VigenereCipheringMachine {
       ? result
       : result
         .split('')
-        .reverse()
         .join('');
   }
 
@@ -104,7 +103,6 @@ export default class VigenereCipheringMachine {
       ? result
       : result
         .split('')
-        .reverse()
         .join('');
   }
 }
