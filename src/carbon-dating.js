@@ -1,6 +1,7 @@
 import { NotImplementedError } from '../extensions/index.js';
 
 const MODERN_ACTIVITY = 15;
+const LN2 = 0.693;
 const HALF_LIFE_PERIOD = 5730;
 
 /**
@@ -17,7 +18,18 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-export default function dateSample(/* sampleActivity */) {
-  throw new NotImplementedError('Not implemented');
+
+export default function dateSample(sampleActivity) {
+  
+  if (isNaN(sampleActivity) || typeof sampleActivity != 'string') return false;
+  
+  let activity = parseFloat(sampleActivity);
+  if (isNaN(activity)) return false;
+  if (activity > MODERN_ACTIVITY || activity <= 0) return false;
+
+  return Math.ceil(
+    Math.log(MODERN_ACTIVITY / activity) / (LN2 / HALF_LIFE_PERIOD),
+  );
+
   // remove line with error and write your code here
 }

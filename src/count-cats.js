@@ -13,8 +13,13 @@ import { NotImplementedError } from '../extensions/index.js';
  *  ['^^', 1, 2]
  * ]) => 3`
  *
- */
-export default function countCats(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
+//  */
+
+export default function countCats(matrix) {
   // remove line with error and write your code here
+  let number = 0;
+  matrix.map(row =>{
+    number += row.filter(value => value == '^^').length;
+  });
+  return number;
 }
